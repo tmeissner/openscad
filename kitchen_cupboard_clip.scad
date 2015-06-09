@@ -1,8 +1,8 @@
 // configuration values
-l   = 34;  // distance between ground and inner clip
+l   = 27;  // distance between ground and inner clip
 h   = 7;   // height of clip
 t   = 5;   // thickness of clip
-w   = 80;  // width of ground plate
+w   = 90;  // width of ground plate
 fs  = 8;   // font size
 
 // internal variables, not change these
@@ -23,20 +23,20 @@ difference() {
       translate([0,33,0]) cylinder(r1=25, r2=25, h=h);
     }
     translate([-w/2,-d,0]) {
-      cube(size = [w,7,h+10]);
+      cube(size = [w,7,h+5]);
     }
     difference() {
       translate([-fs,-d+7,0]) cube(size=[fs*2,d-7-in+2,h]);
       translate([0,1,0]) cylinder(r=out, h=h);
     }
     rotate([0,0,90]) {
-      translate ([-d+10,-fs/2,h]) {
-        linear_extrude(height=2) {
+      translate ([-d+9,-fs/2,h]) {
+        linear_extrude(height=1.5) {
           text(content, font=font, size=fs);
         }
       }
     }
   }
-  translate([-(w/2-10),-d+7,(h+10)/2]) rotate([90]) cylinder(h=3, r1=3, r2=0, $fn=20);
-  translate([w/2-10,-d+7,(h+10)/2])  rotate([90]) cylinder(h=3, r1=3, r2=0, $fn=20);
+  translate([-(w/2-6),-d+7,(h+5)/2]) rotate([90]) cylinder(h=3, r1=3.5, r2=0, $fn=20);
+  translate([w/2-6,-d+7,(h+5)/2])  rotate([90]) cylinder(h=3, r1=3.5, r2=0, $fn=20);
 }
